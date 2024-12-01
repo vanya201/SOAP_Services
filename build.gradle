@@ -1,0 +1,78 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // Servlets and Servlets pages
+    implementation 'javax.servlet:javax.servlet-api:3.0.1'
+    implementation 'javax.servlet.jsp:jsp-api:2.1'
+    implementation 'javax.servlet:jstl:1.2'
+
+    // Hibernate and JPA
+    implementation 'org.hibernate:hibernate-core:5.6.6.Final'
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final' // Correct version for javax.validation
+    implementation 'javax.persistence:javax.persistence-api:2.2'
+
+    // PostgreSQL Driver
+    runtimeOnly 'org.postgresql:postgresql:42.7.3'
+
+    // SLF4J and Logback for logging
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha1'
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+    implementation 'ch.qos.logback:logback-core:1.4.11'
+
+    // Validation API
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+
+    // EL dependency required by Hibernate Validator
+    implementation 'org.glassfish:javax.el:3.0.0'
+
+    implementation ('com.sun.xml.ws:jaxws-ri:2.3.0') {
+        exclude group: 'com.sun.xml.ws', module: 'sdo-eclipselink-plugin'
+    }
+    implementation 'com.sun.activation:javax.activation:1.2.0'
+    implementation 'org.apache.cxf:cxf-rt-features-logging:3.3.0'
+    implementation 'org.apache.cxf:cxf-rt-frontend-simple:3.3.0'
+    implementation 'org.apache.cxf:cxf-rt-transports-http:3.3.0'
+    implementation 'org.apache.cxf:cxf-rt-frontend-jaxws:3.3.0'
+    implementation 'org.apache.cxf:cxf-rt-transports-http-jetty:3.3.0'
+
+    implementation 'antlr:antlr:2.7.6'
+    implementation 'commons-collections:commons-collections:3.1'
+    implementation 'dom4j:dom4j:1.6.1'
+    implementation 'javassist:javassist:3.4.GA'
+    implementation 'javax.transaction:jta:1.1'
+
+    // Spring XSD (если требуется локальная загрузка)
+    implementation 'org.springframework:spring-core:5.3.22.RELEASE'
+    implementation 'org.springframework:spring-web:5.3.22'
+    implementation 'org.springframework:spring-context:5.3.22'
+    implementation 'org.springframework:spring-beans:5.3.22'
+
+    // CXF XSD (локальная версия)
+    implementation 'org.apache.cxf:cxf-rt-frontend-jaxws:3.5.5'
+    implementation 'org.apache.cxf:cxf-rt-frontend-jaxrs:3.5.5'
+}
+
+test {
+    useJUnitPlatform()
+}

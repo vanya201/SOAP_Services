@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.stu.cn.ua/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="sellerservice" targetNamespace="http://service.stu.cn.ua/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.stu.cn.ua/" elementFormDefault="unqualified" targetNamespace="http://service.stu.cn.ua/" version="1.0">
+
+  <xs:element name="addSeller" type="tns:addSeller"/>
+
+  <xs:element name="addSellerResponse" type="tns:addSellerResponse"/>
+
+  <xs:element name="deleteSeller" type="tns:deleteSeller"/>
+
+  <xs:element name="deleteSellerResponse" type="tns:deleteSellerResponse"/>
+
+  <xs:element name="getAllSellers" type="tns:getAllSellers"/>
+
+  <xs:element name="getAllSellersResponse" type="tns:getAllSellersResponse"/>
+
+  <xs:element name="updateSeller" type="tns:updateSeller"/>
+
+  <xs:element name="updateSellerResponse" type="tns:updateSellerResponse"/>
+
+  <xs:complexType name="getAllSellers">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllSellersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="Seller" type="tns:seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="seller">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addSeller">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Seller" type="tns:seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addSellerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Seller" type="tns:seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteSeller">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Seller" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteSellerResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="updateSeller">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Seller" type="tns:seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateSellerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Seller" type="tns:seller"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllSellers">
+    <wsdl:part element="tns:getAllSellers" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteSellerResponse">
+    <wsdl:part element="tns:deleteSellerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSellerResponse">
+    <wsdl:part element="tns:addSellerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateSellerResponse">
+    <wsdl:part element="tns:updateSellerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllSellersResponse">
+    <wsdl:part element="tns:getAllSellersResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addSeller">
+    <wsdl:part element="tns:addSeller" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteSeller">
+    <wsdl:part element="tns:deleteSeller" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateSeller">
+    <wsdl:part element="tns:updateSeller" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SellerService">
+    <wsdl:operation name="getAllSellers">
+      <wsdl:input message="tns:getAllSellers" name="getAllSellers">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllSellersResponse" name="getAllSellersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSeller">
+      <wsdl:input message="tns:addSeller" name="addSeller">
+    </wsdl:input>
+      <wsdl:output message="tns:addSellerResponse" name="addSellerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSeller">
+      <wsdl:input message="tns:deleteSeller" name="deleteSeller">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteSellerResponse" name="deleteSellerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSeller">
+      <wsdl:input message="tns:updateSeller" name="updateSeller">
+    </wsdl:input>
+      <wsdl:output message="tns:updateSellerResponse" name="updateSellerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="sellerserviceSoapBinding" type="tns:SellerService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllSellers">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllSellers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllSellersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSeller">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addSeller">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addSellerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSeller">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteSeller">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteSellerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSeller">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateSeller">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateSellerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="sellerservice">
+    <wsdl:port binding="tns:sellerserviceSoapBinding" name="SellerServiceImplPort">
+      <soap:address location="http://localhost:8080/Gradle___org_example___WSDL_1_0_SNAPSHOT_war/services/sellerservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
